@@ -97,3 +97,15 @@ Rust prevents direct mutation of static variables to uphold memory safety and av
 
 
 #### Reflection Subscriber-2
+
+##### 1. Have you explored things outside of the steps in the tutorial, for example: src/lib.rs? If not, explain why you did not do so. If yes, explain things that you have learned from those other parts of code.
+
+Yes, I examined src/lib.rs to gain a deeper understanding of how the application manages its configuration. I discovered that the AppConfig struct, combined with the dotenvy crate, is responsible for loading environment variables. Additionally, I learned that Figment is used to dynamically merge these variables, allowing the application to adapt to various environments without requiring hardcoded values. This method enhances flexibility and maintainability.
+
+##### 2. Since you have completed the tutorial by now and have tried to test your notification system by spawning multiple instances of Receiver, explain how Observer pattern eases you to plug in more subscribers. How about spawning more than one instance of Main app, will it still be easy enough to add to the system?
+
+The Observer pattern streamlines the process of adding new subscribers since each Receiver instance can register itself independently. This approach eliminates direct dependencies between the Publisher and the Receivers, making it easier to scale the system. However, if multiple instances of the Main app (Publisher) are introduced, additional measures would be necessary to coordinate message distribution effectively. As long as Receivers subscribe to the appropriate Publisher, the system remains structured and manageable.
+
+##### 3. Have you tried to make your own Tests, or enhance documentation on your Postman collection? If you have tried those features, tell us whether it is useful for your work (it can be your tutorial work or your Group Project).
+
+I implemented custom tests to verify the functionality of NotificationRepository and NotificationService. These tests were beneficial in uncovering edge cases and ensuring that the system operated correctly under various conditions. Furthermore, refining the Postman collection by including detailed documentation and example payloads significantly improved the testing and debugging experience. This was particularly helpful for team-based projects, where clear API documentation facilitates smoother collaboration.
